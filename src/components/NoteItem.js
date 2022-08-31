@@ -2,6 +2,7 @@ import React from 'react';
 import ArchiveButton from './ArchiveButton';
 import DeleteButton from './DeleteButton';
 import NoteItemBody from './NoteItemBody';
+import NoteItemFooter from './NoteItemFooter';
 
 export default function NoteItem({
     id,
@@ -15,20 +16,12 @@ export default function NoteItem({
     return (
         <article className="note-item" id={`note-${id}`}>
             <NoteItemBody title={title} body={body} createdAt={createdAt} />
-            {archived ? (
-                <ArchiveButton
-                    id={id}
-                    onArchive={onArchive}
-                    isArchive={archived}
-                ></ArchiveButton>
-            ) : (
-                <ArchiveButton
-                    id={id}
-                    onArchive={onArchive}
-                    isArchive={archived}
-                />
-            )}
-            <DeleteButton id={id} onDelete={onDelete} />
+            <NoteItemFooter
+                archived={archived}
+                id={id}
+                onArchive={onArchive}
+                onDelete={onDelete}
+            />
         </article>
     );
 }

@@ -52,10 +52,8 @@ export default class NotesApp extends Component {
 
         const keyword = query.toLowerCase();
 
-        const notes = this.state.notes.filter(
-            (note) =>
-                note.title.toLowerCase().includes(keyword) ||
-                note.body.toLowerCase().includes(keyword)
+        const notes = this.state.notes.filter((note) =>
+            note.title.toLowerCase().includes(keyword)
         );
 
         this.setState({ notes });

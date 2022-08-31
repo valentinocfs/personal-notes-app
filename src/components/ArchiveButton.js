@@ -1,4 +1,5 @@
 import React from 'react';
+import { Icon } from '@iconify/react';
 
 export default function ArchiveButton({ id, isArchive, onArchive }) {
     return (
@@ -6,7 +7,11 @@ export default function ArchiveButton({ id, isArchive, onArchive }) {
             className="btn__archive btn--green"
             onClick={() => onArchive(id)}
         >
-            {isArchive ? <i>Unarchive</i> : <i>Archive</i>}
+            {isArchive ? (
+                <Icon icon="ic:baseline-unarchive" width="20" />
+            ) : (
+                <Icon icon="bxs:archive-in" width="20" />
+            )}
         </button>
     );
 }

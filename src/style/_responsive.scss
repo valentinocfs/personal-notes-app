@@ -1,0 +1,21 @@
+@media screen and (max-width: 768px) {
+    header {
+        .wrapper {
+            .header--left {
+                & p {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 16px;
+        justify-content: center;
+
+        p {
+            text-align: center;
+        }
+    }
+}

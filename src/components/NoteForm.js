@@ -4,6 +4,8 @@ export default class NoteForm extends Component {
     constructor(props) {
         super(props);
 
+        this.charLeft = React.createRef();
+
         this.state = {
             title: '',
             body: '',
@@ -24,9 +26,7 @@ export default class NoteForm extends Component {
                 return {
                     ...prevState,
                     [event.target.name]: event.target.value,
-                    charLength: this.state.title.length
-                        ? this.state.title.length + 1
-                        : this.state.title.length + 1,
+                    charLength: this.state.title.length,
                 };
             });
         } else {
@@ -39,6 +39,8 @@ export default class NoteForm extends Component {
                 };
             });
         }
+
+        changeColorByCharLenght(this.state.charLength);
     }
 
     onSubmitHandler(event) {
@@ -65,9 +67,12 @@ export default class NoteForm extends Component {
     render() {
         return (
             <section className="notes-form">
-                <p className="notes-form__charleft">
-                    {this.state.charLength}/{this.state.maxLength}
-                </p>
+                <div className="notes-form__header">
+                    <h3>New Notes</h3>
+                    <p ref={this.charLeft} className="notes-form__charleft">
+                        {this.state.charLength}/{this.state.maxLength}
+                    </p>
+                </div>
                 <form onSubmit={this.onSubmitHandler}>
                     <input
                         name="title"
@@ -105,4 +110,20 @@ function generateId() {
 
 function generateDate() {
     return new Date();
+}
+
+function changeColorByCharLenght(charLength) {
+    const text = document.querySelector('.notes-form__charleft');
+
+    text.classList.remove('primary', 'green', 'red', 'yellow');
+
+    if (charLength > 0 && charLength < 25) {
+        text.classList.add('green');
+    } else if (charLength >= 25 && charLength < 40) {
+        text.classList.add('yellow');
+    } else if (charLength >= 40 && charLength < 50) {
+        text.classList.add('red');
+    } else {
+        text.classList.add('primary');
+    }
 }

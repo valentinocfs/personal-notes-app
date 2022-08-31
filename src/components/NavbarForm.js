@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Icon } from '@iconify/react';
 export default class NavbarForm extends Component {
     constructor(props) {
         super(props);
@@ -33,7 +33,9 @@ export default class NavbarForm extends Component {
                     placeholder="Search notes..."
                     onChange={this.onSearchInputChangeHandler}
                 />
-                <button>Search</button>
+                <button>
+                    <Icon icon="fa-solid:search" width="20" />
+                </button>
             </form>
         );
     }

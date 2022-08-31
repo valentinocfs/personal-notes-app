@@ -4,10 +4,10 @@ export default function Footer() {
     return (
         <footer className="footer">
             <div className="footer--left">
-                <p>Dicoding Submissions</p>
+                <p>Dicoding Submissions &copy; {new Date().getFullYear()}</p>
             </div>
             <div className="footer--right">
-                <p>&copy; {new Date().getFullYear()}</p>
+                <p>github.com/valentinocfs</p>
             </div>
         </footer>
     );
